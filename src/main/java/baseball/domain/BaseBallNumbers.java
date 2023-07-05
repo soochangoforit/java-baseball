@@ -43,9 +43,11 @@ public class BaseBallNumbers {
         return baseBallNumbers;
     }
 
-    public void play(BaseBallNumbers playerBaseBallNumbers) {
+    // TODO : 어떠한 결과 상태를 enum으로도 관리?? , 그렇다면 4 Strike 까지 존재한다면 모든 경우를 enum에 만들어야 함으로 적절 (x) 판단
+    public GameResult play(BaseBallNumbers playerBaseBallNumbers) {
         int strikeCount = countStrike(playerBaseBallNumbers);
         int ballCount = countBall(playerBaseBallNumbers, strikeCount);
+        return new GameResult(strikeCount, ballCount);
     }
 
     private int countBall(BaseBallNumbers playerBaseBallNumbers, int strikeCount) {
@@ -62,7 +64,7 @@ public class BaseBallNumbers {
 
     // TODO : IntStream rangeClosed() 사용법
     private int countStrike(BaseBallNumbers playerBaseBallNumbers) {
-        IntStream.range(0, BASEBALL_NUMBER_SIZE)
+        return (int) IntStream.range(0, BASEBALL_NUMBER_SIZE)
                 .filter(index -> isStrike(playerBaseBallNumbers, index))
                 .count();
     }

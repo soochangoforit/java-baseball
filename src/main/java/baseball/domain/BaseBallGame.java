@@ -8,7 +8,7 @@ public class BaseBallGame {
     }
 
     public void play(BaseBallNumbers playerBaseBallNumbers) {
-        randomBaseBallNumbers.play(playerBaseBallNumbers);
+        GameResult result = randomBaseBallNumbers.play(playerBaseBallNumbers);
 
     }
 }
