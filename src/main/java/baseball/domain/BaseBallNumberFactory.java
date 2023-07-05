@@ -1,12 +1,15 @@
 package baseball.domain;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 public class BaseBallNumberFactory {
-    public List<Integer> generate(String playerBaseBallNumber) {
+
+    // TODO : collectingAndThen에 대해서 학습하기
+    public BaseBallNumbers generate(String playerBaseBallNumber) {
         return playerBaseBallNumber.chars()
                 .mapToObj(Character::getNumericValue)
-                .collect(Collectors.toList());
+                .map(BaseBallNumber::new)
+                .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 }

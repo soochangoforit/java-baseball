@@ -1,6 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.BaseBallNumberFactory;
+import baseball.domain.BaseBallNumbers;
+import baseball.domain.Generator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
@@ -12,14 +14,17 @@ public class GameController {
     private final InputView inputView = InputView.getInstance();
 
     private final BaseBallNumberFactory baseBallNumberFactory;
+    private final Generator generator;
 
-    public GameController(BaseBallNumberFactory baseBallNumberFactory) {
+    public GameController(BaseBallNumberFactory baseBallNumberFactory, Generator generator) {
         this.baseBallNumberFactory = baseBallNumberFactory;
+        this.generator = generator;
     }
 
     public void run() {
         outputView.printGameStart();
-        String baseBallNumber = inputView.printScanNumberMessage();
-        List<Integer> playerBaseBallNumbers = baseBallNumberFactory.generate(baseBallNumber);
+        String playerBaseBallNumber = inputView.printScanNumberMessage();
+        BaseBallNumbers playerBaseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
+        BaseBallNumbers randomBaseBallNumbers = generator.generateRandomNumber();
     }
 }

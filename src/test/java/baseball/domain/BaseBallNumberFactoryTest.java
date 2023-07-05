@@ -15,9 +15,11 @@ class BaseBallNumberFactoryTest {
     @ParameterizedTest
     @ValueSource(strings = {"123", "456", "789"})
     void generate메서드는_String_입력값이_들어오는_경우_협력에_필요한_타입으로_변환한다(String playerBaseBallNumber) {
-        List<Integer> baseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
+        BaseBallNumbers baseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
 
-        assertThat(baseBallNumbers).hasSize(3);
-        assertThat(baseBallNumbers).allSatisfy(number -> assertThat(number).isInstanceOf(Integer.class));
+        assertThat(baseBallNumbers.size()).isEqualTo(3);
+        assertThat(baseBallNumbers.numbers()).allSatisfy(baseBallNumber -> {
+            assertThat(baseBallNumber).isInstanceOf(BaseBallNumber.class);
+        });
     }
 }
