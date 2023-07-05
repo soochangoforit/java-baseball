@@ -21,7 +21,7 @@ public class OutputView {
     }
 
     public void printScanNumberMessage() {
-        System.out.println(SCAN_NUMBER_MESSAGE);
+        System.out.print(SCAN_NUMBER_MESSAGE);
     }
 
 }
