@@ -7,9 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RandomNumberGenerator {
+public class RandomNumberGenerator implements Generator {
 
-    public static List<Integer> generateRandomNumber() {
+    public List<Integer> generateRandomNumber() {
         Set<Integer> randomNumbers = new HashSet<>();
         while (randomNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
