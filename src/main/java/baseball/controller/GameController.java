@@ -27,6 +27,7 @@ public class GameController {
         String playerBaseBallNumber = inputView.printScanNumberMessage();
         BaseBallNumbers playerBaseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
         BaseBallNumbers randomBaseBallNumbers = generator.generateRandomNumber();
-        BaseBallGame game = new BaseBallGame(playerBaseBallNumbers, randomBaseBallNumbers);
+        BaseBallGame game = new BaseBallGame(randomBaseBallNumbers);
+        game.play(playerBaseBallNumbers);
     }
 }

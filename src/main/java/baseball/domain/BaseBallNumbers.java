@@ -42,4 +42,32 @@ public class BaseBallNumbers {
     public List<BaseBallNumber> numbers() {
         return baseBallNumbers;
     }
+
+    public void play(BaseBallNumbers playerBaseBallNumbers) {
+        int strikeCount = countStrike(playerBaseBallNumbers);
+        int ballCount = countBall(playerBaseBallNumbers, strikeCount);
+    }
+
+    private int countBall(BaseBallNumbers playerBaseBallNumbers, int strikeCount) {
+        return (int) playerBaseBallNumbers.numbers()
+                .stream()
+                .filter(this::isBall)
+                .count() - strikeCount;
+    }
+
+    private boolean isBall(BaseBallNumber playerBaseBallNumber) {
+        return this.baseBallNumbers.contains(playerBaseBallNumber);
+    }
+
+
+    // TODO : IntStream rangeClosed() 사용법
+    private int countStrike(BaseBallNumbers playerBaseBallNumbers) {
+        IntStream.range(0, BASEBALL_NUMBER_SIZE)
+                .filter(index -> isStrike(playerBaseBallNumbers, index))
+                .count();
+    }
+
+    private boolean isStrike(BaseBallNumbers playerBaseBallNumbers, int index) {
+        return baseBallNumbers.get(index).equals(playerBaseBallNumbers.numbers().get(index));
+    }
 }
