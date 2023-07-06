@@ -11,6 +11,12 @@ public class InputView {
         return LazyHolder.INSTANCE;
     }
 
+    public boolean askKeepPlaying() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String input = Console.readLine();
+        return input.equals("1");
+    }
+
     private static class LazyHolder {
         private static final InputView INSTANCE = new InputView();
     }

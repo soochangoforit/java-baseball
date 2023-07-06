@@ -12,12 +12,12 @@ public class OutputView {
 
     public void printGameResult(GameResult result) {
         StringBuilder resultMessage = new StringBuilder();
+        if(result.ballCount() > 0) {
+            resultMessage.append(result.ballCount()).append("볼 ");
+        }
 
         if(result.strikeCount() > 0) {
-            resultMessage.append(result.strikeCount()).append("스트라이크 ");
-        }
-        if(result.ballCount() > 0) {
-            resultMessage.append(result.ballCount()).append("볼");
+            resultMessage.append(result.strikeCount()).append("스트라이크");
         }
 
         if(result.strikeCount() == 0 && result.ballCount() == 0) {
@@ -25,6 +25,9 @@ public class OutputView {
         }
 
         System.out.println(resultMessage);
+        if (result.isAllStrike()) {
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
     }
 
     private static class LazyHolder {

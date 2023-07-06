@@ -4,7 +4,6 @@ import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
 
 public class GameController {
 
@@ -21,11 +20,21 @@ public class GameController {
 
     public void run() {
         outputView.printGameStart();
-        String playerBaseBallNumber = inputView.printScanNumberMessage();
-        BaseBallNumbers playerBaseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
-        BaseBallNumbers randomBaseBallNumbers = baseBallNumberFactory.generateRandomNumber(generator);
-        BaseBallGame game = new BaseBallGame(randomBaseBallNumbers);
-        GameResult result = game.play(playerBaseBallNumbers);
-        outputView.printGameResult(result);
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            BaseBallNumbers randomBaseBallNumbers = baseBallNumberFactory.generateRandomNumber(generator);
+            BaseBallGame game = new BaseBallGame(randomBaseBallNumbers);
+            playUntilfinish(game);
+            keepPlaying = inputView.askKeepPlaying();
+        }
+    }
+
+    private void playUntilfinish(BaseBallGame game) {
+        while (game.isNotEnd()) {
+            String playerBaseBallNumber = inputView.printScanNumberMessage();
+            BaseBallNumbers playerBaseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
+            GameResult result = game.play(playerBaseBallNumbers);
+            outputView.printGameResult(result);
+        }
     }
 }
