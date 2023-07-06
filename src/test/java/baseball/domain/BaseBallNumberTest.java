@@ -16,5 +16,13 @@ class BaseBallNumberTest {
                 .isInstanceOf(BaseBallGameException.class);
     }
 
+    @Test
+    void equals메서드는_같은_숫자인지_확인한다() {
+        BaseBallNumber baseBallNumber = new BaseBallNumber(1);
+
+        assertThat(baseBallNumber.equals(new BaseBallNumber(1))).isTrue();
+        assertThat(baseBallNumber.equals(new BaseBallNumber(2))).isFalse();
+    }
+
 
 }
