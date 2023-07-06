@@ -12,6 +12,6 @@ public enum BaseBallGameStatus {
     }
 
     public boolean isNotEnd() {
-        return this == END;
+        return this == CONTINUE;
     }
 }
