@@ -1,5 +1,5 @@
 package baseball.domain;
 
 public interface Generator {
-    BaseBallNumbers generateRandomNumber();
+    int generateRandomNumber();
 }

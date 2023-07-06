@@ -7,8 +7,7 @@ public class BaseBallGame {
         this.randomBaseBallNumbers = randomBaseBallNumbers;
     }
 
-    public void play(BaseBallNumbers playerBaseBallNumbers) {
-        GameResult result = randomBaseBallNumbers.play(playerBaseBallNumbers);
-
+    public GameResult play(BaseBallNumbers playerBaseBallNumbers) {
+        return randomBaseBallNumbers.play(playerBaseBallNumbers);
     }
 }

@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class BaseBallNumbers {
 
-    private static final int BASEBALL_NUMBER_SIZE = 3;
+    public static final int BASEBALL_NUMBER_SIZE = 3;
 
     private final List<BaseBallNumber> baseBallNumbers;
 
