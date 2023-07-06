@@ -15,7 +15,6 @@ public class InputValidator {
 
     private static boolean validateDuplicate(String inputNumbers) {
         return inputNumbers.chars()
-                .filter(InputValidator::validateInRange)
                 .distinct()
                 .count() == VALID_BASEBALL_NUMBER_LENGTH;
     }
