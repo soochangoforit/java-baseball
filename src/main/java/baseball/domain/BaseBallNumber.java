@@ -32,4 +32,8 @@ public class BaseBallNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
+
+    public int number() {
+        return number;
+    }
 }

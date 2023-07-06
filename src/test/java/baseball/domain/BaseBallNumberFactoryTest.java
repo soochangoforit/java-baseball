@@ -1,15 +1,16 @@
 package baseball.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
 class BaseBallNumberFactoryTest {
 
     private final BaseBallNumberFactory baseBallNumberFactory = new BaseBallNumberFactory();
+    private final Generator generator = new RandomNumberGenerator();
 
     // TODO : 새로운 Test Code 연습, ParameterizedTest aseertThat().allSatisfy()
     @ParameterizedTest
@@ -18,8 +19,35 @@ class BaseBallNumberFactoryTest {
         BaseBallNumbers baseBallNumbers = baseBallNumberFactory.generate(playerBaseBallNumber);
 
         assertThat(baseBallNumbers.size()).isEqualTo(3);
-        assertThat(baseBallNumbers.numbers()).allSatisfy(baseBallNumber -> {
+        assertThat(baseBallNumbers.numbers())
+                .allSatisfy(baseBallNumber -> {
             assertThat(baseBallNumber).isInstanceOf(BaseBallNumber.class);
         });
     }
+
+    @Test
+    void _generateRandomNumber메서드는_3개의_숫자를_생성한다() {
+        BaseBallNumbers randomNumbers = baseBallNumberFactory.generateRandomNumber(generator);
+
+        assertThat(randomNumbers.size()).isEqualTo(3);
+    }
+
+    // TODO : 새로운 Test Code 연습, doesNotHaveDuplicates()
+    @Test
+    void _generateRandomNumber메서드는_중복되지_않는_숫자를_생성한다() {
+        BaseBallNumbers randomNumbers = baseBallNumberFactory.generateRandomNumber(generator);
+
+        assertThat(randomNumbers.numbers()).doesNotHaveDuplicates();
+    }
+
+    @Test
+    void _generateRandomNumber메서드는_1에서_9까지의_숫자를_생성한다() {
+        BaseBallNumbers randomNumbers = baseBallNumberFactory.generateRandomNumber(generator);
+
+        assertThat(randomNumbers.numbers())
+                .allSatisfy(baseBallNumber -> {
+                    assertThat(baseBallNumber.number()).isBetween(1, 9);
+                });
+    }
+
 }
