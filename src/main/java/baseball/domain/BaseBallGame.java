@@ -15,11 +15,11 @@ public class BaseBallGame {
 
     public GameResult play(BaseBallNumbers playerBaseBallNumbers) {
         GameResult result = randomBaseBallNumbers.play(playerBaseBallNumbers);
-        isAllStrike(result);
+        updateGameStatusOnAllStrikes(result);
         return result;
     }
 
-    private void isAllStrike(GameResult result) {
+    private void updateGameStatusOnAllStrikes(GameResult result) {
         if(result.isAllStrike()) {
             gameStatus = new BaseBallGameStatus(true);
         }
