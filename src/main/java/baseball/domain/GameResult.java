@@ -32,4 +32,8 @@ public class GameResult {
     public int hashCode() {
         return Objects.hash(strikeCount, ballCount);
     }
+
+    public boolean isAllStrike() {
+        return strikeCount == BaseBallNumbers.BASEBALL_NUMBER_SIZE;
+    }
 }
