@@ -15,13 +15,17 @@ public class BaseBallGame {
 
     public GameResult play(BaseBallNumbers playerBaseBallNumbers) {
         GameResult result = randomBaseBallNumbers.play(playerBaseBallNumbers);
-        isGameEnd(result);
+        isAllStrike(result);
         return result;
     }
 
-    private void isGameEnd(GameResult result) {
+    private void isAllStrike(GameResult result) {
         if(result.isAllStrike()) {
             gameStatus = new BaseBallGameStatus(true);
         }
+    }
+
+    public boolean isNotEnd() {
+        return gameStatus.equals(new BaseBallGameStatus(false));
     }
 }
