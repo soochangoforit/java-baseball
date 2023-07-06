@@ -1,5 +1,8 @@
 package baseball.domain;
 
+import static baseball.domain.BaseBallGameStatus.CONTINUE;
+import static baseball.domain.BaseBallGameStatus.END;
+
 public class BaseBallGame {
     private final BaseBallNumbers randomBaseBallNumbers;
     private BaseBallGameStatus gameStatus;
@@ -10,7 +13,7 @@ public class BaseBallGame {
     }
 
     public BaseBallGame(BaseBallNumbers randomBaseBallNumbers) {
-        this(randomBaseBallNumbers, new BaseBallGameStatus(false));
+        this(randomBaseBallNumbers, CONTINUE);
     }
 
     public GameResult play(BaseBallNumbers playerBaseBallNumbers) {
@@ -21,11 +24,11 @@ public class BaseBallGame {
 
     private void updateGameStatusOnAllStrikes(GameResult result) {
         if(result.isAllStrike()) {
-            gameStatus = new BaseBallGameStatus(true);
+            gameStatus = END;
         }
     }
 
     public boolean isNotEnd() {
-        return gameStatus.equals(new BaseBallGameStatus(false));
+        return gameStatus.isNotEnd();
     }
 }
