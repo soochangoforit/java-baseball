@@ -16,5 +16,4 @@ class RandomNumberGeneratorTest {
         assertThat(randomNumber).isBetween(1, 9);
     }
 
-    // TODO : 새롭게 배운 doesNotHaveDuplicates()
 }

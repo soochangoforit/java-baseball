@@ -12,7 +12,6 @@ class BaseBallNumberFactoryTest {
     private final BaseBallNumberFactory baseBallNumberFactory = new BaseBallNumberFactory();
     private final Generator generator = new RandomNumberGenerator();
 
-    // TODO : 새로운 Test Code 연습, ParameterizedTest aseertThat().allSatisfy()
     @ParameterizedTest
     @ValueSource(strings = {"123", "456", "789"})
     void generate메서드는_String_입력값이_들어오는_경우_협력에_필요한_타입으로_변환한다(String playerBaseBallNumber) {
@@ -32,7 +31,6 @@ class BaseBallNumberFactoryTest {
         assertThat(randomNumbers.size()).isEqualTo(3);
     }
 
-    // TODO : 새로운 Test Code 연습, doesNotHaveDuplicates()
     @Test
     void _generateRandomNumber메서드는_중복되지_않는_숫자를_생성한다() {
         BaseBallNumbers randomNumbers = baseBallNumberFactory.generateRandomNumber(generator);
