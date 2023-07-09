@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.service;
 
+import baseball.domain.BaseBallNumbers;
 import baseball.view.dto.request.PlayerBaseBallRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,16 +10,17 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.*;
 
-class BaseBallNumbersFactoryTest {
+class BaseBallGenerateServiceTest {
 
-    private final BaseBallNumbersFactory baseBallNumbersFactory = new BaseBallNumbersFactory();
+    private final BaseBallGenerateService baseBallGenerateService = new BaseBallGenerateService();
 
     @ParameterizedTest
     @MethodSource("generateBaseBallNumbersForTest")
-    void generateBaseBallNumbers메서드는_String형태의_사용자_야구예측번호를_BaseBallNumbers로_응답한다(String baseBallNumber) {
+    void createPlayerBaseBallNumbers메서드는_String형태의_사용자_야구예측번호를_BaseBallNumbers로_응답한다(String baseBallNumber) {
         PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest(baseBallNumber);
-        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest);
+        BaseBallNumbers playerBaseBallNumbers = baseBallGenerateService.createPlayerBaseBallNumbers(playerBaseBallRequest);
 
         assertThat(playerBaseBallNumbers)
                 .isInstanceOf(BaseBallNumbers.class);
@@ -26,23 +28,23 @@ class BaseBallNumbersFactoryTest {
 
     @ParameterizedTest
     @MethodSource("generateNotBaseBallNumbersLengthForTest")
-    void generateBaseBallNumbers메서드는_3자리가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다(String baseBallNumbers) {
+    void createPlayerBaseBallNumbers메서드는_3자리가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다(String baseBallNumbers) {
         PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest(baseBallNumbers);
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
+        assertThatThrownBy(() -> baseBallGenerateService.createPlayerBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void generateBaseBallNumbers메서드는_1_9_사이의_숫자가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
+    void createPlayerBaseBallNumbers메서드는_1_9_사이의_숫자가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
         PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest("019");
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
+        assertThatThrownBy(() -> baseBallGenerateService.createPlayerBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void generateBaseBallNumbers메서드는_중복된_숫자를_가진_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
+    void createPlayerBaseBallNumbers메서드는_중복된_숫자를_가진_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
         PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest("112");
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
+        assertThatThrownBy(() -> baseBallGenerateService.createPlayerBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
