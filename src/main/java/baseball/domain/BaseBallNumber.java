@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.Objects;
+
 public class BaseBallNumber {
     
     private static final int MIN_BASEBALL_NUMBER = 1;
@@ -20,5 +22,18 @@ public class BaseBallNumber {
 
     private static boolean validateInRange(int baseBallNumber) {
         return baseBallNumber >= MIN_BASEBALL_NUMBER && baseBallNumber <= MAX_BASEBALL_NUMBER;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseBallNumber that = (BaseBallNumber) o;
+        return baseBallNumber == that.baseBallNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baseBallNumber);
     }
 }
