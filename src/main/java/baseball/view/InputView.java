@@ -18,7 +18,9 @@ public class InputView {
 
     public String scanBallBallNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
-        return Console.readLine();
+        String playerBaseBallNumbers = Console.readLine();
+        InputValidator.validatePlayerBaseBallNumber(playerBaseBallNumbers);
+        return playerBaseBallNumbers;
     }
 
 
