@@ -35,4 +35,5 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validatePlayerBaseBallNumber(playNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }
