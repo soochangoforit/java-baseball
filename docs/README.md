@@ -45,6 +45,9 @@
 - [x] BaseBallNumber 3개를 가진다.
   - 중복된 숫자를 가지지 않는다.
 
+### BaseBallNumbersFactory
+- [x] 사용자가 입력한 숫자를 BaseBallNumbers로 만든다.
+
 
 ### Input
 
