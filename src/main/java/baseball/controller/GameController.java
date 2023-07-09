@@ -1,7 +1,7 @@
 package baseball.controller;
 
 import baseball.domain.BaseBallNumbers;
-import baseball.domain.BaseBallNumbersFactory;
+import baseball.service.BaseBallGenerateService;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
@@ -11,17 +11,17 @@ public class GameController {
     private final OutputView outputView = OutputView.getInstance();
     private final InputView inputView = InputView.getInstance();
 
-    private final BaseBallNumbersFactory baseBallNumbersFactory;
+    private final BaseBallGenerateService baseBallGenerateService;
 
-    public GameController(BaseBallNumbersFactory baseBallNumbersFactory) {
-        this.baseBallNumbersFactory = baseBallNumbersFactory;
+    public GameController(BaseBallGenerateService baseBallGenerateService) {
+        this.baseBallGenerateService = baseBallGenerateService;
     }
 
 
     public void gameStart() {
         outputView.printGameStartMessage();
         PlayerBaseBallRequest playerBaseBallNumber = inputView.scanBaseBallNumber();
-        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallNumber);
+        BaseBallNumbers playerBaseBallNumbers = baseBallGenerateService.createPlayerBaseBallNumbers(playerBaseBallNumber);
 
 
     }
