@@ -16,7 +16,7 @@ public class InputView {
         return LazyHolder.INSTANCE;
     }
 
-    public String scanBallBallNumber() {
+    public String scanBaseBallNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
         String playerBaseBallNumbers = Console.readLine();
         InputValidator.validatePlayerBaseBallNumber(playerBaseBallNumbers);
