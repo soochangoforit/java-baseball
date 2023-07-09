@@ -12,5 +12,6 @@ public class GameController {
     public void gameStart() {
         outputView.printGameStartMessage();
         String playerBaseBallNumber = inputView.scanBallBallNumber();
+
     }
 }

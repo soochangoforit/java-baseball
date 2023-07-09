@@ -5,13 +5,11 @@ public class InputValidator {
     private static final int BASEBALL_NUMBER_SIZE = 3;
     private static final String BASEBALL_NUMBER_RANGE_REGEX = "^[1-9]*$";
 
-    public static String validatePlayerBaseBallNumber(String playerBaseBallNumber) {
+    public static void validatePlayerBaseBallNumber(String playerBaseBallNumber) {
         if (!validateNumberSize(playerBaseBallNumber) || !validateNumberInRange(playerBaseBallNumber)
                 || !validateNotDuplicate(playerBaseBallNumber)) {
             throw new IllegalArgumentException();
         }
-
-        return playerBaseBallNumber;
     }
 
     private static boolean validateNumberInRange(String playerBaseBallNumber) {
