@@ -4,6 +4,7 @@ import baseball.domain.BaseBallNumbers;
 import baseball.domain.BaseBallNumbersFactory;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import baseball.view.dto.request.PlayerBaseBallRequest;
 
 public class GameController {
 
@@ -19,8 +20,9 @@ public class GameController {
 
     public void gameStart() {
         outputView.printGameStartMessage();
-        String playerBaseBallNumber = inputView.scanBaseBallNumber();
+        PlayerBaseBallRequest playerBaseBallNumber = inputView.scanBaseBallNumber();
         BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallNumber);
+
 
     }
 }

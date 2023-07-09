@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.view.dto.request.PlayerBaseBallRequest;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -16,11 +17,10 @@ public class InputView {
         return LazyHolder.INSTANCE;
     }
 
-    public String scanBaseBallNumber() {
+    public PlayerBaseBallRequest scanBaseBallNumber() {
         System.out.print(BASEBALL_NUMBER_INPUT_MESSAGE);
         String playerBaseBallNumbers = Console.readLine();
-        InputValidator.validatePlayerBaseBallNumber(playerBaseBallNumbers);
-        return playerBaseBallNumbers;
+        return new PlayerBaseBallRequest(playerBaseBallNumbers);
     }
 
 

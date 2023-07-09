@@ -1,8 +1,7 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
+import baseball.view.dto.request.PlayerBaseBallRequest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -18,7 +17,8 @@ class BaseBallNumbersFactoryTest {
     @ParameterizedTest
     @MethodSource("generateBaseBallNumbersForTest")
     void generateBaseBallNumbers메서드는_String형태의_사용자_야구예측번호를_BaseBallNumbers로_응답한다(String baseBallNumber) {
-        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.generateBaseBallNumbers(baseBallNumber);
+        PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest(baseBallNumber);
+        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest);
 
         assertThat(playerBaseBallNumbers)
                 .isInstanceOf(BaseBallNumbers.class);
@@ -27,21 +27,22 @@ class BaseBallNumbersFactoryTest {
     @ParameterizedTest
     @MethodSource("generateNotBaseBallNumbersLengthForTest")
     void generateBaseBallNumbers메서드는_3자리가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다(String baseBallNumbers) {
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(baseBallNumbers))
+        PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest(baseBallNumbers);
+        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void generateBaseBallNumbers메서드는_1_9_사이의_숫자가_아닌_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
-        String baseBallNumbers = "019";
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(baseBallNumbers))
+        PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest("019");
+        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void generateBaseBallNumbers메서드는_중복된_숫자를_가진_사용자_야구예측번호를_입력하면_Exception을_반환한다() {
-        String baseBallNumbers = "112";
-        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(baseBallNumbers))
+        PlayerBaseBallRequest playerBaseBallRequest = new PlayerBaseBallRequest("112");
+        assertThatThrownBy(() -> baseBallNumbersFactory.generateBaseBallNumbers(playerBaseBallRequest))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
