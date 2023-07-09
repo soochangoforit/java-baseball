@@ -1,6 +1,9 @@
 package baseball.domain;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class BaseBallNumbers {
 
@@ -11,6 +14,12 @@ public class BaseBallNumbers {
     public BaseBallNumbers(List<BaseBallNumber> baseBallNumbers) {
         validateBaseBallNumbers(baseBallNumbers);
         this.baseBallNumbers = baseBallNumbers;
+    }
+
+    public BaseBallNumbers(int... baseBallNumbers) {
+        this(Arrays.stream(baseBallNumbers)
+                .mapToObj(BaseBallNumber::new)
+                .collect(toList()));
     }
 
     private void validateBaseBallNumbers(List<BaseBallNumber> baseBallNumbers) {
