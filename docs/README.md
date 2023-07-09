@@ -39,7 +39,11 @@
   - 1~9 사이의 값이 들어있는지 확인
 
 ### BaseBallNumber
-- [ ] 1부터 9까지의 숫자를 가진다.
+- [x] 1부터 9까지의 숫자를 가진다.
+
+### BaseBallNumbers
+- [x] BaseBallNumber 3개를 가진다.
+  - 중복된 숫자를 가지지 않는다.
 
 
 ### Input
