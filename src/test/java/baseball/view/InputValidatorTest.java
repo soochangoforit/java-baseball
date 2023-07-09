@@ -28,4 +28,11 @@ class InputValidatorTest {
         assertThatThrownBy(() -> InputValidator.validatePlayerBaseBallNumber(playNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"111", "122"})
+    void validatePlayerBaseBallNumber메서드는_입력값이_중복되면_Exception반환(String playNumbers) {
+        assertThatThrownBy(() -> InputValidator.validatePlayerBaseBallNumber(playNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
