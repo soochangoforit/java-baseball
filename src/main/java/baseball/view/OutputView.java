@@ -11,18 +11,30 @@ public class OutputView {
     public void printGameResult(BaseBallGameResult gameResult) {
         if (gameResult.hasNothing()) {
             System.out.println("낫싱");
+            return;
         }
-        if (gameResult.hasBall()) {
+
+        if (gameResult.hasBall() && gameResult.hasStrike()) {
             int ballCount = gameResult.getBallCount();
-            System.out.printf("%d볼 ", ballCount);
+            int strikeCount = gameResult.getStrikeCount();
+            System.out.printf("%d볼 %d스트라이크\n", ballCount, strikeCount);
+            return;
         }
-        if (gameResult.hasStrike()) {
+
+        if (gameResult.hasBall() && !gameResult.hasStrike()) {
+            int ballCount = gameResult.getBallCount();
+            System.out.printf("%d볼\n", ballCount);
+            return;
+        }
+        if (gameResult.hasStrike() && !gameResult.hasBall()) {
             int strikeCount = gameResult.getStrikeCount();
             System.out.printf("%d스트라이크\n", strikeCount);
+            if (gameResult.hasAllStrike()) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            }
         }
-        if (gameResult.hasAllStrike()) {
-            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        }
+
+
     }
 
     private static class LazyHolder {
