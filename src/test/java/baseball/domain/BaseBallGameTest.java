@@ -1,9 +1,7 @@
 package baseball.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static baseball.domain.BaseBallGameStatus.NOT_FINISH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
