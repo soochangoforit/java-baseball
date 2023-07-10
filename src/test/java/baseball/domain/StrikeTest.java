@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StrikeTest {
 
@@ -26,5 +27,12 @@ class StrikeTest {
 
         assertThatThrownBy(() -> Strike.from(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void isThreeStrike메서드는_3스트라이크인_경우_true을_응답한다() {
+        Strike strike = Strike.THREE;
+
+        assertTrue(strike.isThreeStrike());
     }
 }

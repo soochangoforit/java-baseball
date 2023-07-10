@@ -25,4 +25,8 @@ public enum Strike {
     public int getStrikeCount() {
         return strikeCount;
     }
+
+    public boolean isThreeStrike() {
+        return this == THREE;
+    }
 }
