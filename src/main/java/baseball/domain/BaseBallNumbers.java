@@ -2,6 +2,7 @@ package baseball.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -40,5 +41,15 @@ public class BaseBallNumbers {
 
     private boolean validateSize(List<BaseBallNumber> baseBallNumbers) {
         return baseBallNumbers.size() == BASEBALL_NUMBER_SIZE;
+    }
+
+    public int countStrike(BaseBallNumbers playerBaseBallNumbers) {
+        return (int) IntStream.range(0, BASEBALL_NUMBER_SIZE)
+                .filter(index -> isStrike(playerBaseBallNumbers, index))
+                .count();
+    }
+
+    private boolean isStrike(BaseBallNumbers playerBaseBallNumbers, int index) {
+        return baseBallNumbers.get(index).equals(playerBaseBallNumbers.baseBallNumbers.get(index));
     }
 }
