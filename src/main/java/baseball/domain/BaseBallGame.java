@@ -36,4 +36,7 @@ public class BaseBallGame {
         }
     }
 
+    public boolean isNotFinished() {
+        return !isFinished();
+    }
 }
