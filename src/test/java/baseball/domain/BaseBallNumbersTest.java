@@ -31,9 +31,9 @@ class BaseBallNumbersTest {
         BaseBallNumbers playerBaseBallNumbers = new BaseBallNumbers(1, 2, 3);
         BaseBallNumbers randomBaseBallNumbers = new BaseBallNumbers(1, 2, 3);
 
-        int strikeCount = playerBaseBallNumbers.countStrike(randomBaseBallNumbers);
+        Strike strike = playerBaseBallNumbers.countStrike(randomBaseBallNumbers);
 
-        assertThat(strikeCount).isEqualTo(3);
+        assertThat(strike).isEqualTo(Strike.THREE);
     }
 
     @Test
@@ -41,11 +41,11 @@ class BaseBallNumbersTest {
         BaseBallNumbers playerBaseBallNumbers = new BaseBallNumbers(1, 2, 3);
         BaseBallNumbers randomBaseBallNumbers = new BaseBallNumbers(3, 1, 2);
 
-        int strikeCount = randomBaseBallNumbers.countStrike(playerBaseBallNumbers);
+        Strike strikeCount = randomBaseBallNumbers.countStrike(playerBaseBallNumbers);
 
-        int ballCount = randomBaseBallNumbers.countBall(playerBaseBallNumbers, strikeCount);
+        Ball ball = randomBaseBallNumbers.countBall(playerBaseBallNumbers, strikeCount);
 
-        assertThat(ballCount).isEqualTo(3);
+        assertThat(ball).isEqualTo(Ball.THREE);
     }
 
     private static Stream<int[]> duplicateBaseBallNumbersForTest() {

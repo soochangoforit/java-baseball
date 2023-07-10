@@ -20,4 +20,8 @@ public class BaseBallGame {
     }
 
 
+    public void startGame(BaseBallNumbers playerBaseBallNumbers) {
+        Strike strike = randomBaseBallNumbers.countStrike(playerBaseBallNumbers);
+        Ball ball = randomBaseBallNumbers.countBall(playerBaseBallNumbers, strike);
+    }
 }

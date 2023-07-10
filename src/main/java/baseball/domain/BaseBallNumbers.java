@@ -43,21 +43,24 @@ public class BaseBallNumbers {
         return baseBallNumbers.size() == BASEBALL_NUMBER_SIZE;
     }
 
-    public int countStrike(BaseBallNumbers playerBaseBallNumbers) {
-        return (int) IntStream.range(0, BASEBALL_NUMBER_SIZE)
+    public Strike countStrike(BaseBallNumbers playerBaseBallNumbers) {
+        int strikeCount = (int)IntStream.range(0, BASEBALL_NUMBER_SIZE)
                 .filter(index -> isStrike(playerBaseBallNumbers, index))
                 .count();
+
+        return Strike.from(strikeCount);
     }
 
     private boolean isStrike(BaseBallNumbers playerBaseBallNumbers, int index) {
         return baseBallNumbers.get(index).equals(playerBaseBallNumbers.baseBallNumbers.get(index));
     }
 
-    public int countBall(BaseBallNumbers playerBaseBallNumbers, int strikeCount) {
-        long ballCount = this.baseBallNumbers.stream()
+    public Ball countBall(BaseBallNumbers playerBaseBallNumbers, Strike strike) {
+        int ballCount = (int)baseBallNumbers.stream()
                 .filter(playerBaseBallNumbers::contains)
                 .count();
-        return (int)ballCount - strikeCount;
+
+        return Ball.from(ballCount - strike.getStrikeCount());
     }
 
     private boolean contains(BaseBallNumber baseBallNumber) {
