@@ -22,4 +22,12 @@ public enum Ball {
                 .orElseThrow(() -> new IllegalArgumentException("볼 카운트가 올바르지 않습니다."));
     }
 
+    public boolean hasBall() {
+        return this != NONE;
+    }
+
+    public int getBallCount() {
+        return ballCount;
+    }
+
 }

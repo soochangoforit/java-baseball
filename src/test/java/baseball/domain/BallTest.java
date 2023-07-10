@@ -28,4 +28,16 @@ class BallTest {
         assertThatThrownBy(() -> Ball.from(invalidNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "true, ONE",
+            "true, TWO",
+            "true, THREE",
+    })
+    void hasBall메서드는_볼이_있는_경우_true를_응답한다(boolean expected, Ball ball) {
+        assertEquals(expected, ball.hasBall());
+    }
+
+
 }
