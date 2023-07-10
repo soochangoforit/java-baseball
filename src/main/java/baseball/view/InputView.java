@@ -10,12 +10,6 @@ public class InputView {
 
     private InputView() { }
 
-    public RestartValue scanRestartStatus() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String restartStatus = Console.readLine();
-        int restartValue = Integer.parseInt(restartStatus);
-        return RestartValue.from(restartValue);
-    }
 
     private static class LazyHolder {
         private static final InputView INSTANCE = new InputView();
@@ -30,6 +24,14 @@ public class InputView {
         String playerBaseBallNumbers = Console.readLine();
         return new PlayerBaseBallRequest(playerBaseBallNumbers);
     }
+
+    public RestartValue scanRestartStatus() {
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String restartStatus = Console.readLine();
+        int restartValue = Integer.parseInt(restartStatus);
+        return RestartValue.from(restartValue);
+    }
+
 
 
 }
