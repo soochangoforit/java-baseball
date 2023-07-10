@@ -4,6 +4,7 @@ import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
+import baseball.view.dto.request.RestartValue;
 
 public class GameController {
 
@@ -21,12 +22,30 @@ public class GameController {
 
     public void gameStart() {
         outputView.printGameStartMessage();
-        PlayerBaseBallRequest playerBaseBallNumber = inputView.scanBaseBallNumber();
-        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.createPlayerBaseBallNumbers(playerBaseBallNumber);
+
+        do {
+            playGame();
+        } while(isGameRestart());
+    }
+
+    private void playGame() {
         BaseBallNumbers randomBaseBallNumbers = baseBallNumbersFactory.createRandomBaseBallNumbers(numberGenerator);
         BaseBallGame baseBallGame = BaseBallGame.initializeGame(randomBaseBallNumbers);
+
+        while(baseBallGame.isNotFinished()) {
+            playTurn(baseBallGame);
+        }
+    }
+
+    private void playTurn(BaseBallGame baseBallGame) {
+        PlayerBaseBallRequest playerBaseBallNumber = inputView.scanBaseBallNumber();
+        BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.createPlayerBaseBallNumbers(playerBaseBallNumber);
         BaseBallGameResult gameResult = baseBallGame.startGame(playerBaseBallNumbers);
+        outputView.printGameResult(gameResult);
+    }
 
-
+    private boolean isGameRestart() {
+        RestartValue restartValue = inputView.scanRestartStatus();
+        return restartValue.isRestart();
     }
 }
