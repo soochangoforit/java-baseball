@@ -35,4 +35,16 @@ class StrikeTest {
 
         assertTrue(strike.isThreeStrike());
     }
+
+
+
+    @ParameterizedTest
+    @CsvSource({
+            "true, ONE",
+            "true, TWO",
+            "true, THREE",
+    })
+    void hasStrike메서드는_볼이_있는_경우_true를_응답한다(boolean expected, Strike strike) {
+        assertEquals(expected, strike.hasStrike());
+    }
 }
