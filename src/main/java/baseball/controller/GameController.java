@@ -1,9 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.BaseBallGame;
-import baseball.domain.BaseBallNumbers;
-import baseball.domain.NumberGenerator;
-import baseball.domain.BaseBallNumbersFactory;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
@@ -28,8 +25,7 @@ public class GameController {
         BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.createPlayerBaseBallNumbers(playerBaseBallNumber);
         BaseBallNumbers randomBaseBallNumbers = baseBallNumbersFactory.createRandomBaseBallNumbers(numberGenerator);
         BaseBallGame baseBallGame = BaseBallGame.initializeGame(randomBaseBallNumbers);
-
-
+        BaseBallGameResult gameResult = baseBallGame.startGame(playerBaseBallNumbers);
 
 
     }

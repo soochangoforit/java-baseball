@@ -23,10 +23,11 @@ public class BaseBallGame {
     }
 
 
-    public void startGame(BaseBallNumbers playerBaseBallNumbers) {
+    public BaseBallGameResult startGame(BaseBallNumbers playerBaseBallNumbers) {
         Strike strike = randomBaseBallNumbers.countStrike(playerBaseBallNumbers);
         Ball ball = randomBaseBallNumbers.countBall(playerBaseBallNumbers, strike);
         updateGameStatus(strike);
+        return new BaseBallGameResult(strike, ball);
     }
 
     private void updateGameStatus(Strike strike) {
