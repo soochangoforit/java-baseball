@@ -12,6 +12,6 @@ public enum BaseBallGameStatus {
     }
 
     public boolean isFinished() {
-        return isFinished;
+        return this == FINISH;
     }
 }
