@@ -36,6 +36,18 @@ class BaseBallNumbersTest {
         assertThat(strikeCount).isEqualTo(3);
     }
 
+    @Test
+    void countBall메서드는_3개의_숫자가_같지만_자리가_일치하지_않는_경우_3볼을_응답한다() {
+        BaseBallNumbers playerBaseBallNumbers = new BaseBallNumbers(1, 2, 3);
+        BaseBallNumbers randomBaseBallNumbers = new BaseBallNumbers(3, 1, 2);
+
+        int strikeCount = randomBaseBallNumbers.countStrike(playerBaseBallNumbers);
+
+        int ballCount = randomBaseBallNumbers.countBall(playerBaseBallNumbers, strikeCount);
+
+        assertThat(ballCount).isEqualTo(3);
+    }
+
     private static Stream<int[]> duplicateBaseBallNumbersForTest() {
         return Stream.of(
                 new int[]{1, 1, 2},

@@ -52,4 +52,15 @@ public class BaseBallNumbers {
     private boolean isStrike(BaseBallNumbers playerBaseBallNumbers, int index) {
         return baseBallNumbers.get(index).equals(playerBaseBallNumbers.baseBallNumbers.get(index));
     }
+
+    public int countBall(BaseBallNumbers playerBaseBallNumbers, int strikeCount) {
+        long ballCount = this.baseBallNumbers.stream()
+                .filter(playerBaseBallNumbers::contains)
+                .count();
+        return (int)ballCount - strikeCount;
+    }
+
+    private boolean contains(BaseBallNumber baseBallNumber) {
+        return baseBallNumbers.contains(baseBallNumber);
+    }
 }
