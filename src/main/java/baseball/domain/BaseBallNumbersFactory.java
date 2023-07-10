@@ -1,12 +1,12 @@
 package baseball.domain;
 
-import baseball.view.dto.request.PlayerBaseBallRequest;
+import static java.util.stream.Collectors.collectingAndThen;
+import static java.util.stream.Collectors.toList;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
+import baseball.view.dto.request.PlayerBaseBallRequest;
 
 public class BaseBallNumbersFactory {
 

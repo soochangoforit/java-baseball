@@ -1,17 +1,17 @@
 package baseball.domain;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 
 class BaseBallGameTest {
 
     @Test
     void initializeGame메서드로_BaseBallGame을_생성하는_경우_기본_게임상태는_NOT_FINISH이다() {
-        BaseBallGame baseBallGame = BaseBallGame.initializeGame(new BaseBallNumbers(1,2,3));
+        BaseBallGame baseBallGame = BaseBallGame.initializeGame(new BaseBallNumbers(1, 2, 3));
 
-        assertThat(baseBallGame.isFinished()).isEqualTo(false);
+        assertThat(baseBallGame.isFinished()).isFalse();
     }
 
 

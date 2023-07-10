@@ -1,18 +1,19 @@
 package baseball.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import baseball.domain.BaseBallNumbers;
 import baseball.domain.BaseBallNumbersFactory;
 import baseball.domain.NumberGenerator;
 import baseball.domain.RandomNumberGenerator;
 import baseball.view.dto.request.PlayerBaseBallRequest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.stream.Stream;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseBallNumbersFactoryTest {
 

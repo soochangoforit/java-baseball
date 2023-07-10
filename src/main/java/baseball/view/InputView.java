@@ -1,14 +1,15 @@
 package baseball.view;
 
-import baseball.view.dto.request.RestartValue;
 import baseball.view.dto.request.PlayerBaseBallRequest;
+import baseball.view.dto.request.RestartValue;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
     private static final String BASEBALL_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
 
-    private InputView() { }
+    private InputView() {
+    }
 
 
     private static class LazyHolder {
@@ -31,7 +32,6 @@ public class InputView {
         int restartValue = Integer.parseInt(restartStatus);
         return RestartValue.from(restartValue);
     }
-
 
 
 }

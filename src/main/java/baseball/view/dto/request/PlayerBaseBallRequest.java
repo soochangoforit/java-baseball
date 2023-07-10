@@ -1,6 +1,5 @@
 package baseball.view.dto.request;
 
-
 public class PlayerBaseBallRequest {
 
     private static final String NUMBER_REGEX = "\\d+";
@@ -25,8 +24,6 @@ public class PlayerBaseBallRequest {
     private boolean isNumber(final String playerBaseBallNumber) {
         return playerBaseBallNumber.matches(NUMBER_REGEX);
     }
-
-
 
 
 }

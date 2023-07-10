@@ -1,6 +1,10 @@
 package baseball.controller;
 
-import baseball.domain.*;
+import baseball.domain.BaseBallGame;
+import baseball.domain.BaseBallGameResult;
+import baseball.domain.BaseBallNumbers;
+import baseball.domain.BaseBallNumbersFactory;
+import baseball.domain.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
@@ -25,14 +29,14 @@ public class GameController {
 
         do {
             playGame();
-        } while(isGameRestart());
+        } while (isGameRestart());
     }
 
     private void playGame() {
         BaseBallNumbers randomBaseBallNumbers = baseBallNumbersFactory.createRandomBaseBallNumbers(numberGenerator);
         BaseBallGame baseBallGame = BaseBallGame.initializeGame(randomBaseBallNumbers);
 
-        while(baseBallGame.isNotFinished()) {
+        while (baseBallGame.isNotFinished()) {
             playTurn(baseBallGame);
         }
     }

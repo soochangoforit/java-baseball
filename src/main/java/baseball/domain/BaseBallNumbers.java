@@ -1,10 +1,10 @@
 package baseball.domain;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
-
-import static java.util.stream.Collectors.toList;
 
 public class BaseBallNumbers {
 
@@ -18,9 +18,7 @@ public class BaseBallNumbers {
     }
 
     public BaseBallNumbers(int... baseBallNumbers) {
-        this(Arrays.stream(baseBallNumbers)
-                .mapToObj(BaseBallNumber::new)
-                .collect(toList()));
+        this(Arrays.stream(baseBallNumbers).mapToObj(BaseBallNumber::new).collect(toList()));
     }
 
     private void validateBaseBallNumbers(List<BaseBallNumber> baseBallNumbers) {
@@ -35,8 +33,8 @@ public class BaseBallNumbers {
 
     private boolean validateNotDuplicate(List<BaseBallNumber> baseBallNumbers) {
         return baseBallNumbers.stream()
-                   .distinct()
-                   .count() == BASEBALL_NUMBER_SIZE;
+                .distinct()
+                .count() == BASEBALL_NUMBER_SIZE;
     }
 
     private boolean validateSize(List<BaseBallNumber> baseBallNumbers) {
@@ -44,7 +42,7 @@ public class BaseBallNumbers {
     }
 
     public Strike countStrike(BaseBallNumbers playerBaseBallNumbers) {
-        int strikeCount = (int)IntStream.range(0, BASEBALL_NUMBER_SIZE)
+        int strikeCount = (int) IntStream.range(0, BASEBALL_NUMBER_SIZE)
                 .filter(index -> isStrike(playerBaseBallNumbers, index))
                 .count();
 
@@ -56,7 +54,7 @@ public class BaseBallNumbers {
     }
 
     public Ball countBall(BaseBallNumbers playerBaseBallNumbers, Strike strike) {
-        int ballCount = (int)baseBallNumbers.stream()
+        int ballCount = (int) baseBallNumbers.stream()
                 .filter(playerBaseBallNumbers::contains)
                 .count();
 
