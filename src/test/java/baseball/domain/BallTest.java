@@ -38,5 +38,10 @@ class BallTest {
         assertEquals(expected, ball.hasBall());
     }
 
+    @Test
+    void hasBall메서드는_볼이_없는_경우_false를_응답한다() {
+        assertEquals(false, Ball.NONE.hasBall());
+    }
+
 
 }
