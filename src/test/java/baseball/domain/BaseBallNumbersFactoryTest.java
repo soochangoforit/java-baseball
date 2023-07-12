@@ -1,4 +1,4 @@
-package baseball.service;
+package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import baseball.domain.BaseBallNumbers;
-import baseball.domain.BaseBallNumbersFactory;
-import baseball.domain.NumberGenerator;
-import baseball.domain.RandomNumberGenerator;
 import baseball.view.dto.request.PlayerBaseBallRequest;
 
 class BaseBallNumbersFactoryTest {
