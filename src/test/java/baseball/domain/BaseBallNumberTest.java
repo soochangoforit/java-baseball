@@ -11,14 +11,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 class BaseBallNumberTest {
 
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "BaseBallNumber는 {0}을 입력받으면 Exception을 반환한다")
     @ValueSource(ints = {0, 10})
     void BaseBallNumber는_1에서_9사이_숫자가_아니면_Exception_반환(int baseBallNumber) {
         assertThatThrownBy(() -> new BaseBallNumber(baseBallNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "BaseBallNumber는 {0}을 입력받으면 Exception을 반환하지 않는다")
     @ValueSource(ints = {1, 9})
     void BaseBallNumber는_1에서_9사이_숫자면_Exception_반환하지_않는다(int baseBallNumber) {
         assertDoesNotThrow(() -> new BaseBallNumber(baseBallNumber));

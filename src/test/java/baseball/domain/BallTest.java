@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class BallTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "from메서드는 {0}에 해당하는 Ball을 반환한다")
     @CsvSource({
             "0, NONE",
             "1, ONE",
