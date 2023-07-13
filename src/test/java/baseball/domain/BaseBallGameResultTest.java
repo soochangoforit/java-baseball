@@ -63,4 +63,12 @@ class BaseBallGameResultTest {
 
         assertFalse(baseBallGameResult.hasAllStrike());
     }
+    
+
+    @Test
+    void isNotFinished메서드는_3개의_스트라이크를_가지는_경우_false을_응답한다() {
+        BaseBallGameResult baseBallGameResult = new BaseBallGameResult(3, 0);
+
+        assertFalse(baseBallGameResult.isNotFinished());
+    }
 }
