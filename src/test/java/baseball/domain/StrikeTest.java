@@ -2,6 +2,7 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,19 @@ class StrikeTest {
         assertTrue(strike.isThreeStrike());
     }
 
+    @Test
+    void isThreeStrike메서드는_3스트라이크가_아닌_경우_false을_응답한다() {
+        Strike strike = Strike.TWO;
+
+        assertTrue(strike.isThreeStrike());
+    }
+    
+    @Test
+    void hasStrike메서드는_스타라이크가_없는_경우_false를_응답한다() {
+        Strike strike = Strike.NONE;
+
+        assertFalse(strike.hasStrike());
+    }
 
     @ParameterizedTest
     @CsvSource({
@@ -43,7 +57,7 @@ class StrikeTest {
             "true, TWO",
             "true, THREE",
     })
-    void hasStrike메서드는_볼이_있는_경우_true를_응답한다(boolean expected, Strike strike) {
+    void hasStrike메서드는_스타라이크가_있는_경우_true를_응답한다(boolean expected, Strike strike) {
         assertEquals(expected, strike.hasStrike());
     }
 }
