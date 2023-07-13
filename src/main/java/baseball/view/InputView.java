@@ -1,7 +1,7 @@
 package baseball.view;
 
 import baseball.view.dto.request.PlayerBaseBallRequest;
-import baseball.view.dto.request.RestartValue;
+import baseball.view.dto.request.RestartRequest;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
@@ -27,11 +27,11 @@ public class InputView {
         return new PlayerBaseBallRequest(playerBaseBallNumbers);
     }
 
-    public RestartValue scanRestartStatus() {
+    public RestartRequest scanRestartStatus() {
         System.out.println(RESTART_INPUT_MESSAGE);
         String restartStatus = Console.readLine();
         int restartValue = Integer.parseInt(restartStatus);
-        return RestartValue.from(restartValue);
+        return RestartRequest.from(restartValue);
     }
 
 

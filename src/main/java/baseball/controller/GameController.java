@@ -1,10 +1,14 @@
 package baseball.controller;
 
-import baseball.domain.*;
+import baseball.domain.BaseBallGame;
+import baseball.domain.BaseBallGameResult;
+import baseball.domain.BaseBallNumbers;
+import baseball.domain.BaseBallNumbersFactory;
+import baseball.domain.NumberGenerator;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
-import baseball.view.dto.request.RestartValue;
+import baseball.view.dto.request.RestartRequest;
 
 public class GameController {
 
@@ -48,7 +52,7 @@ public class GameController {
     }
 
     private boolean isGameRestart() {
-        RestartValue restartValue = inputView.scanRestartStatus();
-        return restartValue.isRestart();
+        RestartRequest restartRequest = inputView.scanRestartStatus();
+        return restartRequest.isRestart();
     }
 }

@@ -2,20 +2,20 @@ package baseball.view.dto.request;
 
 import java.util.stream.Stream;
 
-public enum RestartValue {
+public enum RestartRequest {
 
     RESTART(1),
     END(2);
 
     private final int restartNumber;
 
-    RestartValue(int restartNumber) {
+    RestartRequest(int restartNumber) {
         this.restartNumber = restartNumber;
     }
 
-    public static RestartValue from(int restartNumber) {
+    public static RestartRequest from(int restartNumber) {
         return Stream.of(values())
-                .filter(restartValue -> restartValue.restartNumber == restartNumber)
+                .filter(restartRequest -> restartRequest.restartNumber == restartNumber)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("restart 혹은 end 하기 위한 올바른 입력값이 아닙니다."));
     }
