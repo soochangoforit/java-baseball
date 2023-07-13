@@ -1,10 +1,6 @@
 package baseball.controller;
 
-import baseball.domain.BaseBallGame;
-import baseball.domain.BaseBallGameResult;
-import baseball.domain.BaseBallNumbers;
-import baseball.domain.BaseBallNumbersFactory;
-import baseball.domain.NumberGenerator;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import baseball.view.dto.request.PlayerBaseBallRequest;
@@ -36,16 +32,19 @@ public class GameController {
         BaseBallNumbers randomBaseBallNumbers = baseBallNumbersFactory.createRandomBaseBallNumbers(numberGenerator);
         BaseBallGame baseBallGame = BaseBallGame.initializeGame(randomBaseBallNumbers);
 
-        while (baseBallGame.isNotFinished()) {
-            playTurn(baseBallGame);
-        }
+        BaseBallGameResult gameResult;
+        do {
+            gameResult = playTurn(baseBallGame);
+        } while (gameResult.isNotFinished());
+
     }
 
-    private void playTurn(BaseBallGame baseBallGame) {
+    private BaseBallGameResult playTurn(BaseBallGame baseBallGame) {
         PlayerBaseBallRequest playerBaseBallNumber = inputView.scanBaseBallNumber();
         BaseBallNumbers playerBaseBallNumbers = baseBallNumbersFactory.createPlayerBaseBallNumbers(playerBaseBallNumber);
         BaseBallGameResult gameResult = baseBallGame.startGame(playerBaseBallNumbers);
         outputView.printGameResult(gameResult);
+        return gameResult;
     }
 
     private boolean isGameRestart() {

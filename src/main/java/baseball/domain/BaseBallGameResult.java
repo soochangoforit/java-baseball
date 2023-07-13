@@ -53,4 +53,8 @@ public class BaseBallGameResult {
     public int hashCode() {
         return Objects.hash(strike, ball);
     }
+
+    public boolean isNotFinished() {
+        return !hasAllStrike();
+    }
 }

@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import baseball.view.dto.request.PlayerBaseBallRequest;
 
-public class BaseBallNumbersFactory {
+public final class BaseBallNumbersFactory {
 
     public BaseBallNumbers createPlayerBaseBallNumbers(PlayerBaseBallRequest request) {
         String playerBaseBallNumber = request.baseBallNumber();
@@ -18,7 +18,7 @@ public class BaseBallNumbersFactory {
                 .collect(collectingAndThen(toList(), BaseBallNumbers::new));
     }
 
-    public BaseBallNumbers createRandomBaseBallNumbers(NumberGenerator numberGenerator) {
+    public BaseBallNumbers createRandomBaseBallNumbers(final NumberGenerator numberGenerator) {
         return Stream.generate(numberGenerator::generate)
                 .distinct()
                 .limit(3)
