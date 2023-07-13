@@ -2,7 +2,9 @@ package baseball.domain;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,6 +22,14 @@ class BaseBallNumberTest {
     @ValueSource(ints = {1, 9})
     void BaseBallNumber는_1에서_9사이_숫자면_Exception_반환하지_않는다(int baseBallNumber) {
         assertDoesNotThrow(() -> new BaseBallNumber(baseBallNumber));
+    }
+
+
+    @Test
+    void generateRandom메서드는_generator로부터_반환된_숫자로_BaseBallNumber를_생성한다() {
+        NumberGenerator numberGenerator = (a, b) -> 1;
+        BaseBallNumber baseBallNumber = BaseBallNumber.generateRandom(numberGenerator);
+        assertEquals(new BaseBallNumber(1), baseBallNumber);
     }
 
 
