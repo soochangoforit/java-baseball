@@ -41,9 +41,9 @@ class StrikeTest {
     void isThreeStrike메서드는_3스트라이크가_아닌_경우_false을_응답한다() {
         Strike strike = Strike.TWO;
 
-        assertTrue(strike.isThreeStrike());
+        assertFalse(strike.isThreeStrike());
     }
-    
+
     @Test
     void hasStrike메서드는_스타라이크가_없는_경우_false를_응답한다() {
         Strike strike = Strike.NONE;
