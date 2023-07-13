@@ -7,6 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private static final String BASEBALL_NUMBER_INPUT_MESSAGE = "숫자를 입력해주세요 : ";
+    private static final String RESTART_INPUT_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private InputView() {
     }
@@ -27,7 +28,7 @@ public class InputView {
     }
 
     public RestartValue scanRestartStatus() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        System.out.println(RESTART_INPUT_MESSAGE);
         String restartStatus = Console.readLine();
         int restartValue = Integer.parseInt(restartStatus);
         return RestartValue.from(restartValue);
