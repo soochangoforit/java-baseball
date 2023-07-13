@@ -57,7 +57,7 @@ class BaseBallNumbersFactoryTest {
 
     @Test
     void createRandomBaseBallNumbers메서드는_1_9_사이의_숫자가_아닌_경우_Exception을_반환한다() {
-        NumberGenerator numberGenerator = () -> 10;
+        NumberGenerator numberGenerator = (a, b) -> 10;
         assertThatThrownBy(() -> baseBallNumbersFactory.createRandomBaseBallNumbers(numberGenerator))
                 .isInstanceOf(IllegalArgumentException.class);
     }

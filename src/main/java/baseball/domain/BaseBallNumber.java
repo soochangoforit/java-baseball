@@ -3,16 +3,21 @@ package baseball.domain;
 import java.util.Objects;
 
 public class BaseBallNumber {
-    
+
     private static final int MIN_BASEBALL_NUMBER = 1;
     private static final int MAX_BASEBALL_NUMBER = 9;
-    
+
     private final int baseBallNumber;
-    
+
     public BaseBallNumber(int baseBallNumber) {
         validateBaseBallNumber(baseBallNumber);
         this.baseBallNumber = baseBallNumber;
     }
+
+    public static BaseBallNumber generateRandom(NumberGenerator numberGenerator) {
+        return new BaseBallNumber(numberGenerator.generate(MIN_BASEBALL_NUMBER, MAX_BASEBALL_NUMBER));
+    }
+
 
     private void validateBaseBallNumber(int baseBallNumber) {
         if (!validateInRange(baseBallNumber)) {

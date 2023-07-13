@@ -19,10 +19,9 @@ public final class BaseBallNumbersFactory {
     }
 
     public BaseBallNumbers createRandomBaseBallNumbers(final NumberGenerator numberGenerator) {
-        return Stream.generate(numberGenerator::generate)
+        return Stream.generate(() -> BaseBallNumber.generateRandom(numberGenerator))
                 .distinct()
                 .limit(3)
-                .map(BaseBallNumber::new)
                 .collect(Collectors.collectingAndThen(toList(), BaseBallNumbers::new));
     }
 }
